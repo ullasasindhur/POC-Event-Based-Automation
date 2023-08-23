@@ -1,0 +1,15 @@
+group:
+  name: POC Event Based Automation
+vm:
+  box: centos/7
+  hostname: docker
+network:
+  ip: 192.168.29.69
+  bridge: wlp4s0
+virtualbox:
+  memory: 4096
+  cpus: 2
+script:
+  file: scripts/centos7.sh
+zabbix:
+  version: 6.4

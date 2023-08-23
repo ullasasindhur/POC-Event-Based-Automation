@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'yaml'
+ 
+settings = YAML.load_file('settings.yaml')
+
+Vagrant.configure("2") do |config|
+  config.vm.hostname = settings["vm"]["hostname"]
+  config.vm.box = settings["vm"]["box"]
+
+  config.vm.network "public_network", bridge: settings["network"]["bridge"], ip: settings["network"]["ip"]
+
+  config.vm.provider "virtualbox" do |vb|  
+    vb.memory = settings["virtualbox"]["memory"]
+    vb.cpus = settings["virtualbox"]["cpus"]
+    if settings["group"]["name"] and settings["group"]["name"] != ""
+      vb.customize ["modifyvm", :id, "--groups", ("/" + settings["group"]["name"])]
+    end
+  end
+
+  config.vm.provision "shell",
+  env: {
+    "ZABBIX_VERSION" => settings["zabbix"]["version"]
+  }, path: settings["script"]["file"]
+
+end

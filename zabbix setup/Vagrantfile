@@ -24,4 +24,9 @@ Vagrant.configure("2") do |config|
     "ZABBIX_VERSION" => settings["zabbix"]["version"]
   }, path: settings["script"]["file"]
 
+  config.vm.provision :shell,
+  env: {
+    "ZABBIX_VERSION" => settings["zabbix"]["version"]
+  }, path: settings["script"]["bootstrap"], run: 'always'
+
 end

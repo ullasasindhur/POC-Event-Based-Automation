@@ -1,4 +1,9 @@
 # Monitoring Kuberentes with Zabbix:
+
+## Prerequisites:
+    - [Kubernetes Cluster](https://github.com/ullasasindhur/kubernetes-learning/blob/main/setup/cluster/README.md)
+    - [helm](https://helm.sh/docs/intro/install/)
+    - Network access between cluster and zabbix server.
 ## Setup:
 1. Installing zabbix on kubernetes cluster.
     - from the kubernetes folder execute the following commands in terminal.
@@ -26,11 +31,6 @@
        - select `Macros` tab on popup top bar and click on `Inherited and host macros`.
     - Modify `{$KUBE.API.TOKEN}` value to token values generated at the end of Step-1.
         > Note: Please remove "%" at the end of the copied token,if present.
-
-## Prerequisites:
-- Kubernetes Cluster setup and access to the cluster from both host node.
-- helm installed.
-- Network access between cluster and zabbix server.
 
 ## References:
 - https://www.youtube.com/watch?v=Et2O2iyoCzI

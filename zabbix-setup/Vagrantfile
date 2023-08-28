@@ -30,6 +30,4 @@ Vagrant.configure("2") do |config|
   }, path: settings["script"]["bootstrap"], run: 'always'
 
   config.vm.provision :shell, path: settings["script"]["eda-server"], run: 'always'
-  
-  config.vm.provision :shell, path: settings["script"]["ansible"]
 end

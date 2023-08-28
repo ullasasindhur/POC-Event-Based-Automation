@@ -1,0 +1,33 @@
+zabbix_export:
+  version: '6.4'
+  host_groups:
+    - uuid: f43c4187196f4f5995bc5b2f8a928003
+      name: Kubernetes
+  hosts:
+    - host: 'Kubernetes Cluster State'
+      name: 'Kubernetes Cluster State'
+      proxy:
+        name: zabbix-proxy
+      templates:
+        - name: 'Kubernetes cluster state by HTTP'
+      groups:
+        - name: Kubernetes
+      macros:
+        - macro: '{$KUBE.API.TOKEN}'
+          value: paste_your_value_here
+          description: 'Service account bearer token.'
+      inventory_mode: DISABLED
+    - host: 'Kubernetes Nodes'
+      name: 'Kubernetes Nodes'
+      description: 'All the nodes of the kubernetes cluster'
+      proxy:
+        name: zabbix-proxy
+      templates:
+        - name: 'Kubernetes nodes by HTTP'
+      groups:
+        - name: Kubernetes
+      macros:
+        - macro: '{$KUBE.API.TOKEN}'
+          value: paste_your_value_here
+          description: 'Service account bearer token.'
+      inventory_mode: DISABLED

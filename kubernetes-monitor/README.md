@@ -41,5 +41,5 @@
 
 ## Uninstall:
 ```
-helm uninstall zabbix -n monitoring
+helm uninstall zabbix -n zabbix
 ```

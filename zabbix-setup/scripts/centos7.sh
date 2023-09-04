@@ -13,8 +13,3 @@ git clone https://github.com/zabbix/zabbix-docker.git
 cd zabbix-docker
 git checkout $ZABBIX_VERSION
 docker compose --profile all -f ./docker-compose_v3_alpine_mysql_latest.yaml up -d
-git clone https://github.com/ansible/eda-server.git
-cd eda-server
-cd tools/docker
-docker compose -p eda -f docker-compose-stage.yaml pull
-docker compose -p eda -f docker-compose-stage.yaml up -d

@@ -12,7 +12,5 @@ virtualbox:
 script:
   file: scripts/centos7.sh
   bootstrap: scripts/bootstrap.sh
-  ansible: scripts/ansible.sh
-  eda-server: scripts/eda-server.sh
 zabbix:
   version: 6.4

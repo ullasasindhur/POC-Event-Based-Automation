@@ -1,7 +1,0 @@
-# eda.yaml
-apiVersion: eda.ansible.com/v1alpha1
-kind: EDA
-metadata:
-  name: my-eda
-spec:
-  automation_server_url: http://10.0.0.10:31890

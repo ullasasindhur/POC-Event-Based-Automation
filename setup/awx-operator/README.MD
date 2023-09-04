@@ -24,15 +24,7 @@
     - Select the username you wish to create a token for
     - Click on tokens, then the green plus icon
     - Application can be left empty, input a description and select the read/write scope.
-3. Installing EDA Server Operator:
-    - Execute the following commands from `eda-server` folder
-        ```shell
-        curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
-        ./kustomize build . | kubectl apply -f -
-        kubectl apply -f eda.yaml 
-        ```
 
 ## References:
-- https://github.com/ansible/eda-server-operator
 - https://github.com/ansible/awx-operator
 - https://www.linuxtechi.com/install-ansible-awx-on-kubernetes-cluster/

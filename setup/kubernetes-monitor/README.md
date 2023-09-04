@@ -6,7 +6,7 @@
     - Network access between cluster and zabbix server.
 ## Setup:
 1. Installing zabbix on kubernetes cluster.
-    - from the kubernetes folder execute the following commands in terminal.
+    - from the `kubernetes-monitor` folder execute the following commands in terminal.
         ```shell
         helm repo add zabbix-chart-6.4  https://cdn.zabbix.com/zabbix/integrations/kubernetes-helm/6.4
         helm show values zabbix-chart-6.4/zabbix-helm-chrt > ./zabbix_values.yaml 

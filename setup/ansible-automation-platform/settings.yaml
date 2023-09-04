@@ -1,0 +1,21 @@
+group:
+  name: POC Event Based Automation
+vm:
+  box: generic/rhel9
+  hostname1: aap
+  hostname2: eda
+network:
+  ip1: 192.168.29.99
+  ip2: 192.168.29.100
+  bridge: wlp4s0
+virtualbox:
+  memory1: 9192
+  memory2: 9192
+  cpus: 2
+script:
+  file: scripts/bootstrap.sh
+subscription:
+  username: enter_username
+  password: enter_password
+download:
+  aap: "enter_download_link"

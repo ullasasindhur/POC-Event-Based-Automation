@@ -1,0 +1,65 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+require 'yaml'
+ 
+settings = YAML.load_file('settings.yaml')
+
+Vagrant.configure("2") do |config|
+  config.vm.box = settings["vm"]["box"]
+
+  config.vm.define "aap" do |aap|
+
+      aap.vm.hostname = settings["vm"]["hostname1"]
+      aap.vm.network "public_network", bridge: settings["network"]["bridge"], ip: settings["network"]["ip1"]
+      
+      aap.vm.provider "virtualbox" do |vb|  
+        vb.memory = settings["virtualbox"]["memory1"]
+        vb.cpus = settings["virtualbox"]["cpus"]
+        if settings["group"]["name"] and settings["group"]["name"] != ""
+          vb.customize ["modifyvm", :id, "--groups", ("/" + settings["group"]["name"])]
+        end
+      end
+
+      aap.vm.provision "shell", inline: "sudo subscription-manager register --username #{settings["subscription"]["username"]} --password #{settings["subscription"]["password"]} --auto-attach; exit 0"
+      
+      aap.vm.provision "shell", inline: <<-'SHELL'
+      sed -i 's/^#* *\(PermitRootLogin\)\(.*\)$/\1 yes/' /etc/ssh/sshd_config
+      sed -i 's/^#* *\(PasswordAuthentication\)\(.*\)$/\1 yes/' /etc/ssh/sshd_config
+      systemctl restart sshd.service
+      echo -e "vagrant\nvagrant" | (passwd vagrant)
+      echo -e "root\nroot" | (passwd root)
+    SHELL
+  end
+
+
+  config.vm.define "eda" do |eda|
+
+      eda.vm.hostname = settings["vm"]["hostname2"]
+      eda.vm.network "public_network", bridge: settings["network"]["bridge"], ip: settings["network"]["ip2"]
+      
+      eda.vm.provider "virtualbox" do |vb|  
+        vb.memory = settings["virtualbox"]["memory2"]
+        vb.cpus = settings["virtualbox"]["cpus"]
+        if settings["group"]["name"] and settings["group"]["name"] != ""
+          vb.customize ["modifyvm", :id, "--groups", ("/" + settings["group"]["name"])]
+        end
+      end
+
+      eda.vm.provision "shell",
+      env: {
+        "AAP_LINK" => settings["download"]["aap"],
+        "USERNAME" => settings["subscription"]["username"],
+        "PASSWORD" => settings["subscription"]["password"]
+      }, path: settings["script"]["file"]
+      
+      eda.vm.provision "shell", inline: <<-'SHELL'
+      sed -i 's/^#* *\(PermitRootLogin\)\(.*\)$/\1 yes/' /etc/ssh/sshd_config
+      sed -i 's/^#* *\(PasswordAuthentication\)\(.*\)$/\1 yes/' /etc/ssh/sshd_config
+      systemctl restart sshd.service
+      echo -e "vagrant\nvagrant" | (passwd vagrant)
+      echo -e "root\nroot" | (passwd root)
+    SHELL
+  end
+  
+end

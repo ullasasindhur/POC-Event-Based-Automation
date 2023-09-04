@@ -2,8 +2,6 @@
 
 ## Technologies:
 - Zabbix
-- Kubernetes
-- Eda-Server
-- Ansible
+- Ansible Automation Platform
 - Vagrant
 - Virtual Box

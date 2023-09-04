@@ -4,4 +4,4 @@ kind: EDA
 metadata:
   name: my-eda
 spec:
-  automation_server_url: http://10.0.0.10:32667
+  automation_server_url: http://10.0.0.10:31890

@@ -19,4 +19,4 @@
 
       action:
         run_playbook:
-          name: webhook_apply.yml
+          name: webhook_apply.yaml

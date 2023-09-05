@@ -14,3 +14,14 @@
 
 ## Reference:
 - [Watch this video](https://www.youtube.com/watch?v=q9TvvvfQzYE)
+
+## Tips:
+- If you are facing issue with ansible webhook communication, please disable firewalld with following commands
+    ```shell
+    sudo systemctl disable firewalld
+    sudo service firewalld stop
+    ```
+- If you are getting error with Decision Environment, please disable the eth0 interface with following command
+    ```shell
+    sudo ifconfig eth0 down
+    ```

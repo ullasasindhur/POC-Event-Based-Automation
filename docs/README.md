@@ -1,5 +1,14 @@
 # POC: Event Based Automation
 
+## Hardware Requirements:
+- 20GB RAM (Recommended 32GB RAM)
+- 150GB Storage (Recommended 200GB Free Space)
+
+## Softwares Required:
+- Virtual Box
+- Vagrant
+- RedHat Account
+
 ## Setup
 1. To setup Zabbix, Please refer this [link](/setup/zabbix/README.md).
 2. TO setup Ansible Automation Platform, please refer this [link](/setup/ansible-automation-platform/README.md).

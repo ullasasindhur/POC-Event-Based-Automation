@@ -1,5 +1,10 @@
 # POC: Event Based Automation
 
+## Setup
+1. To setup Zabbix, Please refer this [link](/setup/zabbix/README.md).
+2. TO setup Ansible Automation Platform, please refer this [link](/setup/ansible-automation-platform/README.md).
+3. To Configure Kubernetes-Monitor with zabbix, please refer this [link](/setup/kubernetes-monitor/README.md).
+
 ## Working:
 - Event Driven Ansible contains a Decision Environments, in which Rulebooks are executed, rulebooks are the crucial part of Event Driven Ansible written in YAML just like ansible playbooks,contains four main parts; Name,hosts, Sources, Rules.
 - Sources are like triggers/events sources which initiate the rulebook, which checks the conditions in the rules defined, executes action inside rules upon satisfaction of condition.
